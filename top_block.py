@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Wed Feb 20 15:39:38 2019
+# Generated: Wed Feb 20 16:43:25 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -60,13 +60,13 @@ class top_block(gr.top_block, Qt.QWidget):
         # Variables
         ##################################################
         self.samp_rate = samp_rate = 1.8e6
-        self.freq = freq = 2000
+        self.freq = freq = 500000
         self.fft_size = fft_size = 1024
 
         ##################################################
         # Blocks
         ##################################################
-        self._freq_range = Range(0, 500000, 1, 2000, 200)
+        self._freq_range = Range(0, 500000, 1, 500000, 200)
         self._freq_win = RangeWidget(self._freq_range, self.set_freq, "freq", "counter_slider", float)
         self.top_layout.addWidget(self._freq_win)
         self.qtgui_number_sink_0 = qtgui.number_sink(
@@ -110,6 +110,8 @@ class top_block(gr.top_block, Qt.QWidget):
         )
         self.blocks_short_to_float_0 = blocks.short_to_float(1, float(fft_size/samp_rate))
         self.blocks_null_sink_0 = blocks.null_sink(gr.sizeof_short*1)
+        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_float*1, "/home/aa274/Documents/payload-documentation/test.bin", False)
+        self.blocks_file_sink_0.set_unbuffered(False)
         self.blocks_argmax_xx_0 = blocks.argmax_fs(fft_size)
         self.blocks_add_xx_0 = blocks.add_vcc(1)
         self.analog_sig_source_x_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, freq, 1, 0)
@@ -123,6 +125,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.connect((self.blocks_add_xx_0, 0), (self.logpwrfft_x_0, 0))    
         self.connect((self.blocks_argmax_xx_0, 1), (self.blocks_null_sink_0, 0))    
         self.connect((self.blocks_argmax_xx_0, 0), (self.blocks_short_to_float_0, 0))    
+        self.connect((self.blocks_short_to_float_0, 0), (self.blocks_file_sink_0, 0))    
         self.connect((self.blocks_short_to_float_0, 0), (self.qtgui_number_sink_0, 0))    
         self.connect((self.logpwrfft_x_0, 0), (self.blocks_argmax_xx_0, 0))    
 
@@ -138,8 +141,8 @@ class top_block(gr.top_block, Qt.QWidget):
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
         self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate)
-        self.blocks_short_to_float_0.set_scale(float(self.fft_size/self.samp_rate))
         self.logpwrfft_x_0.set_sample_rate(self.samp_rate)
+        self.blocks_short_to_float_0.set_scale(float(self.fft_size/self.samp_rate))
 
     def get_freq(self):
         return self.freq
