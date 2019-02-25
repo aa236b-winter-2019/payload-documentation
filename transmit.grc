@@ -490,7 +490,7 @@
     </param>
     <param>
       <key>freq0</key>
-      <value>145600000</value>
+      <value>146600000</value>
     </param>
     <param>
       <key>if_gain0</key>
@@ -1378,7 +1378,7 @@
     </param>
     <param>
       <key>args</key>
-      <value>hackrf=df995d5fm</value>
+      <value>hackrf=995d5f</value>
     </param>
     <param>
       <key>_enabled</key>
