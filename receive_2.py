@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 ##################################################
 # GNU Radio Python Flow Graph
-# Title: Top Block
-# Generated: Tue Feb 26 12:54:55 2019
+# Title: Receive 2
+# Generated: Tue Feb 26 13:46:25 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -29,12 +29,12 @@ import sys
 import time
 
 
-class top_block(gr.top_block, Qt.QWidget):
+class receive_2(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "Top Block")
+        gr.top_block.__init__(self, "Receive 2")
         Qt.QWidget.__init__(self)
-        self.setWindowTitle("Top Block")
+        self.setWindowTitle("Receive 2")
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
         except:
@@ -51,15 +51,16 @@ class top_block(gr.top_block, Qt.QWidget):
         self.top_grid_layout = Qt.QGridLayout()
         self.top_layout.addLayout(self.top_grid_layout)
 
-        self.settings = Qt.QSettings("GNU Radio", "top_block")
+        self.settings = Qt.QSettings("GNU Radio", "receive_2")
         self.restoreGeometry(self.settings.value("geometry").toByteArray())
 
         ##################################################
         # Variables
         ##################################################
-        self.samp_rate = samp_rate = 2e6
+        self.sdr_samp = sdr_samp = 1.8e6
+        self.samp_rate = samp_rate = 48e3
         self.fft_size = fft_size = 1024
-        self.center_freq = center_freq = 140e6
+        self.center_freq = center_freq = 90100000
 
         ##################################################
         # Blocks
@@ -84,13 +85,14 @@ class top_block(gr.top_block, Qt.QWidget):
         
           
         self.NANO_SDR = osmosdr.source( args="numchan=" + str(1) + " " + "rtl=0" )
-        self.NANO_SDR.set_sample_rate(samp_rate)
+        self.NANO_SDR.set_time_unknown_pps(osmosdr.time_spec_t())
+        self.NANO_SDR.set_sample_rate(sdr_samp)
         self.NANO_SDR.set_center_freq(center_freq, 0)
         self.NANO_SDR.set_freq_corr(0, 0)
         self.NANO_SDR.set_dc_offset_mode(0, 0)
         self.NANO_SDR.set_iq_balance_mode(0, 0)
         self.NANO_SDR.set_gain_mode(False, 0)
-        self.NANO_SDR.set_gain(10, 0)
+        self.NANO_SDR.set_gain(30, 0)
         self.NANO_SDR.set_if_gain(20, 0)
         self.NANO_SDR.set_bb_gain(20, 0)
         self.NANO_SDR.set_antenna("", 0)
@@ -103,10 +105,17 @@ class top_block(gr.top_block, Qt.QWidget):
         self.connect((self.NANO_SDR, 0), (self.qtgui_sink_x_0, 0))    
 
     def closeEvent(self, event):
-        self.settings = Qt.QSettings("GNU Radio", "top_block")
+        self.settings = Qt.QSettings("GNU Radio", "receive_2")
         self.settings.setValue("geometry", self.saveGeometry())
         event.accept()
 
+
+    def get_sdr_samp(self):
+        return self.sdr_samp
+
+    def set_sdr_samp(self, sdr_samp):
+        self.sdr_samp = sdr_samp
+        self.NANO_SDR.set_sample_rate(self.sdr_samp)
 
     def get_samp_rate(self):
         return self.samp_rate
@@ -114,7 +123,6 @@ class top_block(gr.top_block, Qt.QWidget):
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
         self.qtgui_sink_x_0.set_frequency_range(self.center_freq, self.samp_rate)
-        self.NANO_SDR.set_sample_rate(self.samp_rate)
 
     def get_fft_size(self):
         return self.fft_size
@@ -131,7 +139,7 @@ class top_block(gr.top_block, Qt.QWidget):
         self.NANO_SDR.set_center_freq(self.center_freq, 0)
 
 
-def main(top_block_cls=top_block, options=None):
+def main(top_block_cls=receive_2, options=None):
 
     from distutils.version import StrictVersion
     if StrictVersion(Qt.qVersion()) >= StrictVersion("4.5.0"):

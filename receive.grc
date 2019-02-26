@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.10'?>
+<?grc format='1' created='3.7.9'?>
 <flow_graph>
   <timestamp>Sat Feb 16 22:33:14 2019</timestamp>
   <block>
@@ -79,6 +79,33 @@
     <param>
       <key>title</key>
       <value>receive</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(8, 109)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>center_freq</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>90.1e6</value>
     </param>
   </block>
   <block>
@@ -454,7 +481,7 @@
     </param>
     <param>
       <key>file</key>
-      <value>/home/pi/Desktop/test_freq.bin</value>
+      <value>/home/aa274/payload-documentation/test.bin</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -619,7 +646,7 @@
     </param>
     <param>
       <key>scale</key>
-      <value>0.00056888888888888888888889</value>
+      <value>float(fft_size)/float(samp_rate)</value>
     </param>
     <param>
       <key>vlen</key>
@@ -859,7 +886,7 @@
     </param>
     <param>
       <key>freq0</key>
-      <value>145600000</value>
+      <value>center_freq</value>
     </param>
     <param>
       <key>gain_mode0</key>
@@ -2135,7 +2162,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(104, 100)</value>
+      <value>(112, 101)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2249,10 +2276,6 @@
       <value>1.0</value>
     </param>
     <param>
-      <key>axislabels</key>
-      <value>True</value>
-    </param>
-    <param>
       <key>bw</key>
       <value>4000000</value>
     </param>
@@ -2262,7 +2285,7 @@
     </param>
     <param>
       <key>fc</key>
-      <value>146000000</value>
+      <value>center_freq</value>
     </param>
     <param>
       <key>comment</key>
@@ -2521,20 +2544,12 @@
       <value>firdes.WIN_BLACKMAN_hARRIS</value>
     </param>
     <param>
-      <key>label</key>
-      <value>Relative Gain</value>
-    </param>
-    <param>
       <key>ymax</key>
       <value>10</value>
     </param>
     <param>
       <key>ymin</key>
       <value>-140</value>
-    </param>
-    <param>
-      <key>units</key>
-      <value>dB</value>
     </param>
   </block>
   <block>
@@ -2773,10 +2788,6 @@
     <param>
       <key>autoscale</key>
       <value>False</value>
-    </param>
-    <param>
-      <key>axislabels</key>
-      <value>True</value>
     </param>
     <param>
       <key>alias</key>
