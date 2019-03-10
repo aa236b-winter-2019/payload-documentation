@@ -46,7 +46,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>receive_2</value>
+      <value>receive_and_track</value>
     </param>
     <param>
       <key>max_nouts</key>

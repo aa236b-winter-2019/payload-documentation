@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 ##################################################
 # GNU Radio Python Flow Graph
-# Title: File Reader
-# Generated: Sat Mar  9 23:09:36 2019
+# Title: File Reader Demo
+# Generated: Sat Mar  9 23:14:38 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -29,12 +29,12 @@ import sip
 import sys
 
 
-class file_reader(gr.top_block, Qt.QWidget):
+class file_reader_demo(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "File Reader")
+        gr.top_block.__init__(self, "File Reader Demo")
         Qt.QWidget.__init__(self)
-        self.setWindowTitle("File Reader")
+        self.setWindowTitle("File Reader Demo")
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
         except:
@@ -51,7 +51,7 @@ class file_reader(gr.top_block, Qt.QWidget):
         self.top_grid_layout = Qt.QGridLayout()
         self.top_layout.addLayout(self.top_grid_layout)
 
-        self.settings = Qt.QSettings("GNU Radio", "file_reader")
+        self.settings = Qt.QSettings("GNU Radio", "file_reader_demo")
         self.restoreGeometry(self.settings.value("geometry").toByteArray())
 
         ##################################################
@@ -140,7 +140,7 @@ class file_reader(gr.top_block, Qt.QWidget):
         self.connect((self.logpwrfft_x_0, 0), (self.blocks_argmax_xx_0, 0))    
 
     def closeEvent(self, event):
-        self.settings = Qt.QSettings("GNU Radio", "file_reader")
+        self.settings = Qt.QSettings("GNU Radio", "file_reader_demo")
         self.settings.setValue("geometry", self.saveGeometry())
         event.accept()
 
@@ -170,7 +170,7 @@ class file_reader(gr.top_block, Qt.QWidget):
         self.qtgui_sink_x_0.set_frequency_range(self.center_freq, self.samp_rate)
 
 
-def main(top_block_cls=file_reader, options=None):
+def main(top_block_cls=file_reader_demo, options=None):
 
     from distutils.version import StrictVersion
     if StrictVersion(Qt.qVersion()) >= StrictVersion("4.5.0"):

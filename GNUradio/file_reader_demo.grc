@@ -46,7 +46,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>file_reader</value>
+      <value>file_reader_demo</value>
     </param>
     <param>
       <key>max_nouts</key>
