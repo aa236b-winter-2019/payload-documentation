@@ -2786,6 +2786,7 @@ Standard decoupling cap</description>
 <part name="J2" library="SparkFun-Connectors" deviceset="CONN_04" device=""/>
 <part name="J3" library="SparkFun-Connectors" deviceset="CONN_04" device=""/>
 <part name="J4" library="SparkFun-Connectors" deviceset="CONN_03X2" device="FEMALE" value="FEMALE 2x3"/>
+<part name="J7" library="SparkFun-Connectors" deviceset="CONN_04" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -2873,11 +2874,6 @@ Standard decoupling cap</description>
 <wire x1="203.2" y1="93.98" x2="208.28" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="X1" gate="G$1" pin="1"/>
-<wire x1="121.92" y1="30.48" x2="134.62" y2="30.48" width="0.1524" layer="91"/>
-<label x="134.62" y="30.48" size="1.4224" layer="95" xref="yes"/>
-</segment>
-<segment>
 <pinref part="J6" gate="G$1" pin="3"/>
 <wire x1="185.42" y1="58.42" x2="172.72" y2="58.42" width="0.1524" layer="91"/>
 <label x="167.64" y="58.42" size="1.016" layer="95" xref="yes"/>
@@ -2891,6 +2887,43 @@ Standard decoupling cap</description>
 <pinref part="J5" gate="G$1" pin="GND"/>
 <wire x1="215.9" y1="104.14" x2="220.98" y2="104.14" width="0.1524" layer="91"/>
 <label x="220.98" y="104.14" size="1.778" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="PCB1" gate="G$1" pin="GND@6"/>
+<wire x1="106.68" y1="152.4" x2="132.08" y2="152.4" width="0.1524" layer="91"/>
+<label x="132.08" y="152.4" size="1.778" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="PCB1" gate="G$1" pin="GND@14"/>
+<wire x1="106.68" y1="132.08" x2="132.08" y2="132.08" width="0.1524" layer="91"/>
+<label x="132.08" y="132.08" size="1.778" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="PCB1" gate="G$1" pin="GND@25"/>
+<wire x1="78.74" y1="101.6" x2="78.74" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="99.06" x2="132.08" y2="99.06" width="0.1524" layer="91"/>
+<label x="132.08" y="99.06" size="1.778" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="PCB1" gate="G$1" pin="GND@30"/>
+<wire x1="106.68" y1="91.44" x2="132.08" y2="91.44" width="0.1524" layer="91"/>
+<label x="132.08" y="91.44" size="1.778" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="PCB1" gate="G$1" pin="GND@34"/>
+<wire x1="106.68" y1="81.28" x2="132.08" y2="81.28" width="0.1524" layer="91"/>
+<label x="132.08" y="81.28" size="1.778" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="PCB1" gate="G$1" pin="GND@39"/>
+<wire x1="78.74" y1="66.04" x2="78.74" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="60.96" x2="132.08" y2="60.96" width="0.1524" layer="91"/>
+<label x="132.08" y="60.96" size="1.778" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="X1" gate="G$1" pin="4"/>
+<wire x1="121.92" y1="38.1" x2="134.62" y2="38.1" width="0.1524" layer="91"/>
+<label x="134.62" y="38.1" size="1.4224" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="TXO" class="0">
@@ -2968,14 +3001,14 @@ Standard decoupling cap</description>
 <label x="132.08" y="162.56" size="1.4224" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="X1" gate="G$1" pin="4"/>
-<wire x1="121.92" y1="38.1" x2="134.62" y2="38.1" width="0.1524" layer="91"/>
-<label x="134.62" y="38.1" size="1.4224" layer="95" xref="yes"/>
-</segment>
-<segment>
 <pinref part="J6" gate="G$1" pin="1"/>
 <wire x1="185.42" y1="60.96" x2="167.64" y2="60.96" width="0.1524" layer="91"/>
 <label x="167.64" y="60.96" size="1.016" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="X1" gate="G$1" pin="1"/>
+<wire x1="121.92" y1="30.48" x2="134.62" y2="30.48" width="0.1524" layer="91"/>
+<label x="134.62" y="30.48" size="1.4224" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="UART2_RX" class="0">
@@ -3002,18 +3035,11 @@ Standard decoupling cap</description>
 <label x="132.08" y="147.32" size="1.4224" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="D-" class="0">
+<net name="D+" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="3"/>
 <wire x1="121.92" y1="35.56" x2="134.62" y2="35.56" width="0.1524" layer="91"/>
 <label x="134.62" y="35.56" size="1.4224" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="D+" class="0">
-<segment>
-<pinref part="X1" gate="G$1" pin="2"/>
-<wire x1="121.92" y1="33.02" x2="134.62" y2="33.02" width="0.1524" layer="91"/>
-<label x="134.62" y="33.02" size="1.4224" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="GPS_CLK" class="0">
@@ -3040,6 +3066,20 @@ Standard decoupling cap</description>
 <label x="213.36" y="60.96" size="1.016" layer="95" xref="yes"/>
 </segment>
 </net>
+<net name="N$3" class="0">
+<segment>
+<pinref part="PCB1" gate="G$1" pin="GND@20"/>
+<wire x1="106.68" y1="116.84" x2="132.08" y2="116.84" width="0.1524" layer="91"/>
+<label x="132.08" y="116.84" size="1.778" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="D-" class="0">
+<segment>
+<pinref part="X1" gate="G$1" pin="2"/>
+<wire x1="121.92" y1="33.02" x2="134.62" y2="33.02" width="0.1524" layer="91"/>
+<label x="134.62" y="33.02" size="1.4224" layer="95" xref="yes"/>
+</segment>
+</net>
 </nets>
 </sheet>
 <sheet>
@@ -3050,6 +3090,7 @@ Standard decoupling cap</description>
 <wire x1="71.12" y1="185.42" x2="71.12" y2="129.54" width="0.1524" layer="95" style="longdash"/>
 <text x="114.3" y="137.16" size="2.54" layer="97">FTDI : USB (Pi) to Serial (GPS Receiver)</text>
 <text x="10.16" y="137.16" size="2.54" layer="97">Mother Board connector</text>
+<text x="119.38" y="93.98" size="2.54" layer="97">SDR (Socket Connector)</text>
 </plain>
 <instances>
 <instance part="GND2" gate="1" x="226.06" y="160.02" smashed="yes">
@@ -3099,6 +3140,10 @@ Standard decoupling cap</description>
 <instance part="J4" gate="G$1" x="35.56" y="104.14" smashed="yes">
 <attribute name="NAME" x="32.004" y="109.728" size="1.778" layer="95" font="vector"/>
 <attribute name="VALUE" x="32.258" y="98.298" size="1.778" layer="96" font="vector" align="top-left"/>
+</instance>
+<instance part="J7" gate="G$1" x="134.62" y="106.68" smashed="yes">
+<attribute name="VALUE" x="129.54" y="99.314" size="1.778" layer="96" font="vector"/>
+<attribute name="NAME" x="129.54" y="114.808" size="1.778" layer="95" font="vector"/>
 </instance>
 </instances>
 <busses>
@@ -3159,6 +3204,11 @@ Standard decoupling cap</description>
 <pinref part="J3" gate="G$1" pin="1"/>
 <wire x1="27.94" y1="160.02" x2="33.02" y2="160.02" width="0.1524" layer="91"/>
 <label x="33.02" y="160.02" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="J7" gate="G$1" pin="4"/>
+<wire x1="139.7" y1="111.76" x2="144.78" y2="111.76" width="0.1524" layer="91"/>
+<label x="144.78" y="111.76" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="TXO" class="0">
@@ -3264,6 +3314,11 @@ Standard decoupling cap</description>
 <wire x1="27.94" y1="167.64" x2="33.02" y2="167.64" width="0.1524" layer="91"/>
 <label x="33.02" y="167.64" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="J7" gate="G$1" pin="1"/>
+<wire x1="139.7" y1="104.14" x2="144.78" y2="104.14" width="0.1524" layer="91"/>
+<label x="144.78" y="104.14" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="D2-" class="0">
 <segment>
@@ -3287,6 +3342,20 @@ Standard decoupling cap</description>
 <pinref part="J3" gate="G$1" pin="2"/>
 <wire x1="27.94" y1="162.56" x2="33.02" y2="162.56" width="0.1524" layer="91"/>
 <label x="33.02" y="162.56" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="D-" class="0">
+<segment>
+<pinref part="J7" gate="G$1" pin="2"/>
+<wire x1="139.7" y1="106.68" x2="144.78" y2="106.68" width="0.1524" layer="91"/>
+<label x="144.78" y="106.68" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="D+" class="0">
+<segment>
+<pinref part="J7" gate="G$1" pin="3"/>
+<wire x1="139.7" y1="109.22" x2="144.78" y2="109.22" width="0.1524" layer="91"/>
+<label x="144.78" y="109.22" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
