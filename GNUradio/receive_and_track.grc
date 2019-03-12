@@ -105,7 +105,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>430e6</value>
+      <value>430e6 - 9e3</value>
     </param>
   </block>
   <block>
@@ -159,7 +159,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>48e3</value>
+      <value>40e3</value>
     </param>
   </block>
   <block>
@@ -201,7 +201,7 @@
     </param>
     <param>
       <key>bb_gain0</key>
-      <value>20</value>
+      <value>10</value>
     </param>
     <param>
       <key>bw0</key>
@@ -225,7 +225,7 @@
     </param>
     <param>
       <key>if_gain0</key>
-      <value>20</value>
+      <value>10</value>
     </param>
     <param>
       <key>iq_balance_mode0</key>
@@ -233,7 +233,7 @@
     </param>
     <param>
       <key>gain0</key>
-      <value>30</value>
+      <value>10</value>
     </param>
     <param>
       <key>ant10</key>
@@ -1616,7 +1616,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(552, 281)</value>
+      <value>(576, 361)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1675,7 +1675,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(736, 38)</value>
+      <value>(792, 166)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1722,7 +1722,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(760, 313)</value>
+      <value>(792, 393)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1765,7 +1765,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(760, 148)</value>
+      <value>(792, 252)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1828,7 +1828,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(384, 257)</value>
+      <value>(368, 337)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1887,7 +1887,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(736, 222)</value>
+      <value>(792, 310)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -2126,7 +2126,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(384, 63)</value>
+      <value>(568, 167)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -2174,7 +2174,7 @@
     </param>
     <param>
       <key>showrf</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>type</key>
@@ -2189,15 +2189,68 @@
       <value>firdes.WIN_BLACKMAN_hARRIS</value>
     </param>
   </block>
+  <block>
+    <key>rational_resampler_xxx</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>decim</key>
+      <value>int(1.8e6/40e3)</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>fbw</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(368, 167)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>rational_resampler_xxx_0</value>
+    </param>
+    <param>
+      <key>interp</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>taps</key>
+      <value></value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>ccc</value>
+    </param>
+  </block>
   <connection>
     <source_block_id>NANO_SDR</source_block_id>
-    <sink_block_id>logpwrfft_x_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>NANO_SDR</source_block_id>
-    <sink_block_id>qtgui_sink_x_0</sink_block_id>
+    <sink_block_id>rational_resampler_xxx_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -2228,6 +2281,18 @@
   <connection>
     <source_block_id>logpwrfft_x_0</source_block_id>
     <sink_block_id>blocks_argmax_xx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>rational_resampler_xxx_0</source_block_id>
+    <sink_block_id>logpwrfft_x_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>rational_resampler_xxx_0</source_block_id>
+    <sink_block_id>qtgui_sink_x_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
