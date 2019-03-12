@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 ##################################################
 # GNU Radio Python Flow Graph
-# Title: File Reader Demo
-# Generated: Mon Mar 11 10:42:08 2019
+# Title: Recording Doppler
+# Generated: Mon Mar 11 13:21:12 2019
 ##################################################
 
 if __name__ == '__main__':
@@ -29,12 +29,12 @@ import sip
 import sys
 
 
-class file_reader_demo(gr.top_block, Qt.QWidget):
+class recording_doppler(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "File Reader Demo")
+        gr.top_block.__init__(self, "Recording Doppler")
         Qt.QWidget.__init__(self)
-        self.setWindowTitle("File Reader Demo")
+        self.setWindowTitle("Recording Doppler")
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
         except:
@@ -51,7 +51,7 @@ class file_reader_demo(gr.top_block, Qt.QWidget):
         self.top_grid_layout = Qt.QGridLayout()
         self.top_layout.addLayout(self.top_grid_layout)
 
-        self.settings = Qt.QSettings("GNU Radio", "file_reader_demo")
+        self.settings = Qt.QSettings("GNU Radio", "recording_doppler")
         self.restoreGeometry(self.settings.value("geometry").toByteArray())
 
         ##################################################
@@ -67,7 +67,7 @@ class file_reader_demo(gr.top_block, Qt.QWidget):
         self.qtgui_sink_x_0 = qtgui.sink_c(
         	1024, #fftsize
         	firdes.WIN_BLACKMAN_hARRIS, #wintype
-        	center_freq, #fc
+        	0, #fc
         	samp_rate, #bw
         	"", #name
         	True, #plotfreq
@@ -125,7 +125,9 @@ class file_reader_demo(gr.top_block, Qt.QWidget):
         self.blocks_throttle_1 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_short_to_float_0 = blocks.short_to_float(1, float(fft_size)/float(samp_rate))
         self.blocks_null_sink_0 = blocks.null_sink(gr.sizeof_short*1)
-        self.blocks_file_source_0 = blocks.file_source(gr.sizeof_gr_complex*1, "/home/aa274/Documents/payload-documentation/GNUradio/doppler_curve_test.bin", False)
+        self.blocks_file_source_0 = blocks.file_source(gr.sizeof_gr_complex*1, "/home/aa274/Documents/payload-documentation/GNUradio/doppler_curve_test_2.bin", False)
+        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_float*1, "/home/aa274/Documents/payload-documentation/GNUradio/recorded_doppler_2.bin", False)
+        self.blocks_file_sink_0.set_unbuffered(False)
         self.blocks_argmax_xx_0 = blocks.argmax_fs(fft_size)
 
         ##################################################
@@ -134,13 +136,14 @@ class file_reader_demo(gr.top_block, Qt.QWidget):
         self.connect((self.blocks_argmax_xx_0, 1), (self.blocks_null_sink_0, 0))    
         self.connect((self.blocks_argmax_xx_0, 0), (self.blocks_short_to_float_0, 0))    
         self.connect((self.blocks_file_source_0, 0), (self.blocks_throttle_1, 0))    
+        self.connect((self.blocks_short_to_float_0, 0), (self.blocks_file_sink_0, 0))    
         self.connect((self.blocks_short_to_float_0, 0), (self.qtgui_number_sink_0_0, 0))    
         self.connect((self.blocks_throttle_1, 0), (self.logpwrfft_x_0, 0))    
         self.connect((self.blocks_throttle_1, 0), (self.qtgui_sink_x_0, 0))    
         self.connect((self.logpwrfft_x_0, 0), (self.blocks_argmax_xx_0, 0))    
 
     def closeEvent(self, event):
-        self.settings = Qt.QSettings("GNU Radio", "file_reader_demo")
+        self.settings = Qt.QSettings("GNU Radio", "recording_doppler")
         self.settings.setValue("geometry", self.saveGeometry())
         event.accept()
 
@@ -153,7 +156,7 @@ class file_reader_demo(gr.top_block, Qt.QWidget):
         self.blocks_short_to_float_0.set_scale(float(self.fft_size)/float(self.samp_rate))
         self.blocks_throttle_1.set_sample_rate(self.samp_rate)
         self.logpwrfft_x_0.set_sample_rate(self.samp_rate)
-        self.qtgui_sink_x_0.set_frequency_range(self.center_freq, self.samp_rate)
+        self.qtgui_sink_x_0.set_frequency_range(0, self.samp_rate)
 
     def get_fft_size(self):
         return self.fft_size
@@ -167,10 +170,9 @@ class file_reader_demo(gr.top_block, Qt.QWidget):
 
     def set_center_freq(self, center_freq):
         self.center_freq = center_freq
-        self.qtgui_sink_x_0.set_frequency_range(self.center_freq, self.samp_rate)
 
 
-def main(top_block_cls=file_reader_demo, options=None):
+def main(top_block_cls=recording_doppler, options=None):
 
     from distutils.version import StrictVersion
     if StrictVersion(Qt.qVersion()) >= StrictVersion("4.5.0"):

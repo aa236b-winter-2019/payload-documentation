@@ -132,7 +132,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>2048</value>
+      <value>8192</value>
     </param>
   </block>
   <block>
@@ -449,7 +449,7 @@
     </param>
     <param>
       <key>file</key>
-      <value>/home/aa274/Documents/payload-documentation/GNUradio/linear_freq_change_test.bin</value>
+      <value>/home/aa274/Documents/payload-documentation/GNUradio/doppler_curve_test.bin</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -477,7 +477,7 @@
     </param>
     <param>
       <key>repeat</key>
-      <value>True</value>
+      <value>False</value>
     </param>
     <param>
       <key>vlen</key>
